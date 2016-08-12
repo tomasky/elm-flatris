@@ -99,9 +99,9 @@ renderGameButton : Model.State -> Html Action
 renderGameButton state =
   let
     (txt, action) = case state of
-      Model.Stopped -> ("New game", Actions.Start)
-      Model.Playing -> ("Pause", Actions.Pause)
-      Model.Paused -> ("Resume", Actions.Resume)
+      Model.Stopped -> ("新游戏", Actions.Start)
+      Model.Playing -> ("暂停", Actions.Pause)
+      Model.Paused -> ("重新开始", Actions.Resume)
   in
     button
     [ style
@@ -142,12 +142,12 @@ renderPanel {score, lines, next, state} =
     , "top" => "0"
     ]
   ]
-  [ renderTitle "Flatris"
-  , renderLabel "Score"
+  [ renderTitle "方块消"
+  , renderLabel "分数"
   , renderCount score
-  , renderLabel "Lines Cleared"
+  , renderLabel "清除的行数"
   , renderCount lines
-  , renderLabel "Next Shape"
+  , renderLabel "下一个方块"
   , div
     [ style
       [ "margin-top" => "10px"
@@ -241,15 +241,16 @@ renderInfo state =
     ]
   ] [
     Markdown.toHtml [] """
-elm-flatris is a [**Flatris**](https://github.com/skidding/flatris)
-clone coded in [**Elm**](http://elm-lang.org/) language.
+方块游戏
 
-Inspired by the classic [**Tetris**](http://en.wikipedia.org/wiki/Tetris)
-game, the game can be played with a keyboard using the arrow keys,
-and on mobile devices using the buttons below.
+使用向上箭头变换方块的角度
 
-elm-flatris is open source on
-[**GitHub**](https://github.com/w0rm/elm-flatris).
+左右箭头移动，向下箭头下放
+
+同一行占满则消除
+
+移动手机用户使用下面的按钮
+
 """
   ]
 
